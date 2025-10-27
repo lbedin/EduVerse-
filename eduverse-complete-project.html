@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduVerse - Sistema de Gerenciamento Acadêmico</title>
+    <link rel="stylesheet" type="text/css" href="./eduverse_css_fixed.css">
+</head>
+<body>
+    <!-- ==================== TELA 1: LOGIN ==================== -->
+    <div id="login-screen" class="screen active">
+        <div class="stars-container">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+        
+        <div class="login-container">
+            <h1 class="logo">EduVerse</h1>
+            
+            <div class="login-card">
+                <input type="text" id="login-email" placeholder="Email ou Matrícula" class="input-field">
+                <input type="password" id="login-password" placeholder="Senha" class="input-field">
+                
+                <div class="login-links">
+                    <a href="#" class="link">Esqueceu a senha?</a>
+                    <a href="#" class="link">Não tem conta? Registre-se</a>
+                </div>
+                
+                <button class="btn-primary" onclick="handleLogin()">LOGIN</button>
+                
+                <div class="profile-selector">
+                    <p class="text-small">Selecione seu perfil para teste:</p>
+                    <select id="profile-select" class="input-field">
+                        <option value="aluno">Aluno</option>
+                        <option value="professor">Professor</option>
+                        <option value="admin">Administrador</option>
+                        <option value="coordenador">Coordenador</option>
+                        <option value="pais">Pais</option>
+                    </select>
+                </div>
+            </div>
+            
+            <p class="copyright">© 2025 EduVerse. Todos os direitos reservados.</p>
+        </div>
+    </div>
+
+    <!-- ==================== TELA 2: DASHBOARD ALUNO ==================== -->
+    <div id="dashboard-aluno" class="screen">
+        <div class="stars-container">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+        
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-aluno')" class="active">📊 Início</a></li>
+                <li><a href="#" onclick="showScreen('notas-aluno')">📝 Notas</a></li>
+                <li><a href="#" onclick="showScreen('calendario-aluno')">📅 Calendário</a></li>
+                <li><a href="#" onclick="showScreen('documentos-aluno')">📄 Documentos</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Dashboard - Aluno</h1>
+                <div class="user-info">
+                    <span>Bem-vindo, João Silva</span>
+                    <div class="avatar">JS</div>
+                </div>
+            </header>
+            
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h3>Desempenho Geral</h3>
+                    <div class="metric-big">8.5</div>
+                    <p class="text-small">Média Geral</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Frequência</h3>
+                    <div class="metric-big">92%</div>
+                    <p class="text-small">Presença nas Aulas</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 92%"></div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Disciplinas Cursando</h3>
+                    <div class="metric-big">6</div>
+                    <p class="text-small">Disciplinas Ativas</p>
+                </div>
+                
+                <div class="card card-wide">
+                    <h3>Notas por Disciplina</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Disciplina</th>
+                                <th>Nota</th>
+                                <th>Faltas</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Matemática</td>
+                                <td>9.0</td>
+                                <td>2</td>
+                                <td><span class="badge badge-success">Aprovado</span></td>
+                            </tr>
+                            <tr>
+                                <td>Português</td>
+                                <td>8.5</td>
+                                <td>1</td>
+                                <td><span class="badge badge-success">Aprovado</span></td>
+                            </tr>
+                            <tr>
+                                <td>História</td>
+                                <td>7.0</td>
+                                <td>5</td>
+                                <td><span class="badge badge-warning">Em Progresso</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn-secondary" onclick="showScreen('notas-aluno')">Ver Boletim Completo</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== TELA 3: NOTAS ALUNO ==================== -->
+    <div id="notas-aluno" class="screen">
+        <div class="stars-container">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+        
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-aluno')">📊 Início</a></li>
+                <li><a href="#" onclick="showScreen('notas-aluno')" class="active">📝 Notas</a></li>
+                <li><a href="#" onclick="showScreen('calendario-aluno')">📅 Calendário</a></li>
+                <li><a href="#" onclick="showScreen('documentos-aluno')">📄 Documentos</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Notas e Frequência</h1>
+                <button class="btn-primary">📥 Exportar Boletim PDF</button>
+            </header>
+            
+            <div class="card card-wide">
+                <h3>Boletim Completo - 2025</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Disciplina</th>
+                            <th>1º Bim</th>
+                            <th>2º Bim</th>
+                            <th>3º Bim</th>
+                            <th>4º Bim</th>
+                            <th>Média</th>
+                            <th>Faltas</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Matemática</td>
+                            <td>9.5</td>
+                            <td>8.5</td>
+                            <td>9.0</td>
+                            <td>9.0</td>
+                            <td class="highlight">9.0</td>
+                            <td>2</td>
+                            <td><span class="badge badge-success">✓ Aprovado</span></td>
+                        </tr>
+                        <tr>
+                            <td>Português</td>
+                            <td>8.0</td>
+                            <td>9.0</td>
+                            <td>8.5</td>
+                            <td>8.5</td>
+                            <td class="highlight">8.5</td>
+                            <td>1</td>
+                            <td><span class="badge badge-success">✓ Aprovado</span></td>
+                        </tr>
+                        <tr>
+                            <td>História</td>
+                            <td>7.0</td>
+                            <td>7.5</td>
+                            <td>6.5</td>
+                            <td>7.0</td>
+                            <td class="highlight">7.0</td>
+                            <td>5</td>
+                            <td><span class="badge badge-warning">⚠ Atenção</span></td>
+                        </tr>
+                        <tr>
+                            <td>Geografia</td>
+                            <td>8.5</td>
+                            <td>8.0</td>
+                            <td>9.0</td>
+                            <td>8.5</td>
+                            <td class="highlight">8.5</td>
+                            <td>0</td>
+                            <td><span class="badge badge-success">✓ Aprovado</span></td>
+                        </tr>
+                        <tr>
+                            <td>Ciências</td>
+                            <td>9.0</td>
+                            <td>9.5</td>
+                            <td>9.0</td>
+                            <td>9.5</td>
+                            <td class="highlight">9.3</td>
+                            <td>1</td>
+                            <td><span class="badge badge-success">✓ Aprovado</span></td>
+                        </tr>
+                        <tr>
+                            <td>Inglês</td>
+                            <td>8.0</td>
+                            <td>8.5</td>
+                            <td>8.0</td>
+                            <td>8.5</td>
+                            <td class="highlight">8.3</td>
+                            <td>3</td>
+                            <td><span class="badge badge-success">✓ Aprovado</span></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5"><strong>MÉDIA GERAL</strong></td>
+                            <td class="highlight"><strong>8.5</strong></td>
+                            <td><strong>12</strong></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== TELA 4: DASHBOARD PROFESSOR ==================== -->
+    <div id="dashboard-professor" class="screen">
+        <div class="stars-container">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+        
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-professor')" class="active">📊 Início</a></li>
+                <li><a href="#" onclick="showScreen('lancar-notas')">📝 Lançar Notas</a></li>
+                <li><a href="#" onclick="showScreen('comunicados-professor')">💬 Comunicados</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Dashboard - Professor</h1>
+                <div class="user-info">
+                    <span>Prof. Maria Santos</span>
+                    <div class="avatar">MS</div>
+                </div>
+            </header>
+            
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h3>Minhas Turmas</h3>
+                    <div class="metric-big">4</div>
+                    <p class="text-small">Turmas Ativas</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Total de Alunos</h3>
+                    <div class="metric-big">120</div>
+                    <p class="text-small">Alunos sob sua responsabilidade</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Pendências</h3>
+                    <div class="metric-big">8</div>
+                    <p class="text-small">Notas para lançar</p>
+                </div>
+                
+                <div class="card card-wide">
+                    <h3>Minhas Turmas</h3>
+                    <div class="turmas-grid">
+                        <div class="turma-card" onclick="showScreen('lancar-notas')">
+                            <div class="turma-icon">📚</div>
+                            <h4>9º Ano A</h4>
+                            <p>Matemática</p>
+                            <p class="text-small">30 alunos</p>
+                        </div>
+                        <div class="turma-card" onclick="showScreen('lancar-notas')">
+                            <div class="turma-icon">📐</div>
+                            <h4>8º Ano B</h4>
+                            <p>Matemática</p>
+                            <p class="text-small">28 alunos</p>
+                        </div>
+                        <div class="turma-card" onclick="showScreen('lancar-notas')">
+                            <div class="turma-icon">🔢</div>
+                            <h4>9º Ano C</h4>
+                            <p>Matemática</p>
+                            <p class="text-small">32 alunos</p>
+                        </div>
+                        <div class="turma-card" onclick="showScreen('lancar-notas')">
+                            <div class="turma-icon">📊</div>
+                            <h4>8º Ano A</h4>
+                            <p>Matemática</p>
+                            <p class="text-small">30 alunos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== TELA 5: LANÇAR NOTAS ==================== -->
+    <div id="lancar-notas" class="screen">
+        <div class="stars-container">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+        
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-professor')">📊 Início</a></li>
+                <li><a href="#" onclick="showScreen('lancar-notas')" class="active">📝 Lançar Notas</a></li>
+                <li><a href="#" onclick="showScreen('comunicados-professor')">💬 Comunicados</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Lançar Notas e Frequência</h1>
+                <button class="btn-primary" onclick="alert('Notas salvas com sucesso!')">💾 Salvar Alterações</button>
+            </header>
+            
+            <div class="card">
+                <div class="filter-bar">
+                    <select class="input-field">
+                        <option>9º Ano A - Matemática</option>
+                        <option>8º Ano B - Matemática</option>
+                        <option>9º Ano C - Matemática</option>
+                    </select>
+                    <select class="input-field">
+                        <option>1º Bimestre</option>
+                        <option>2º Bimestre</option>
+                        <option>3º Bimestre</option>
+                        <option>4º Bimestre</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="card card-wide">
+                <h3>Turma: 9º Ano A - Matemática</h3>
+                <table class="data-table editable-table">
+                    <thead>
+                        <tr>
+                            <th>Matrícula</th>
+                            <th>Aluno</th>
+                            <th>Nota 1</th>
+                            <th>Nota 2</th>
+                            <th>Trabalho</th>
+                            <th>Média</th>
+                            <th>Faltas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2025001</td>
+                            <td>Ana Clara Silva</td>
+                            <td><input type="number" class="input-note" value="9.0" step="0.1" min="0" max="10"></td>
+                            <td><input type="number" class="input-note" value="8.5" step="0.1" min="0" max="10"></td>
+                            <td><input type="number" class="input-note" value="9.5" step="0.1" min="0" max="10"></td>
+                            <td class="highlight">9.0</td>
+                            <td><input type="number" class="input-note small" value="0" min="0"></td>
+                        </tr>
+                        <tr>
+                            <td>2025002</td>
+                            <td>Bruno Santos</td>
+                            <td><input type="number" class="input-note" value="7.5" step="0.1" min="0" max="10"></td>
+                            <td><input type="number" class="input-note" value="8.0" step="0.1" min="0" max="10"></td>
+                            <td><input type="number" class="input-note" value="7.0" step="0.1" min="0" max="10"></td>
+                            <td class="highlight">7.5</td>
+                            <td><input type="number" class="input-note small" value="2" min="0"></td>
+                        </tr>
+                        <tr>
+                            <td>2025003</td>
+                            <td>Carlos Eduardo</td>
+                            <td><input type="number" class="input-note" value="8.5" step="0.1" min="0" max="10"></td>
+                            <td><input type="number" class="input-note" value="9.0" step="0.1" min="0" max="10"></td>
+                            <td><input type="number" class="input-note" value="8.0" step="0.1" min="0" max="10"></td>
+                            <td class="highlight">8.5</td>
+                            <td><input type="number" class="input-note small" value="1" min="0"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== TELA 6: DASHBOARD ADMINISTRADOR ==================== -->
+    <div id="dashboard-admin" class="screen">
+        <div class="stars-container">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+        
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-admin')" class="active">📊 Painel</a></li>
+                <li><a href="#" onclick="showScreen('gestao-usuarios')">👥 Usuários</a></li>
+                <li><a href="#" onclick="showScreen('financeiro-admin')">💰 Financeiro</a></li>
+                <li><a href="#" onclick="showScreen('relatorios-admin')">📈 Relatórios</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Dashboard - Administrador</h1>
+                <div class="user-info">
+                    <span>Admin</span>
+                    <div class="avatar">AD</div>
+                </div>
+            </header>
+            
+            <div class="dashboard-grid">
+                <div class="card clickable" onclick="showScreen('gestao-usuarios')">
+                    <div class="card-icon">👥</div>
+                    <h3>Gerenciar Alunos</h3>
+                    <p class="text-small">Cadastro, edição e exclusão</p>
+                </div>
+                
+                <div class="card clickable" onclick="showScreen('gestao-usuarios')">
+                    <div class="card-icon">👨‍🏫</div>
+                    <h3>Gerenciar Professores</h3>
+                    <p class="text-small">Gestão de docentes</p>
+                </div>
+                
+                <div class="card clickable" onclick="showScreen('gestao-usuarios')">
+                    <div class="card-icon">📚</div>
+                    <h3>Gerenciar Turmas</h3>
+                    <p class="text-small">Organização de turmas</p>
+                </div>
+                
+                <div class="card clickable" onclick="showScreen('relatorios-admin')">
+                    <div class="card-icon">📊</div>
+                    <h3>Relatórios Gerenciais</h3>
+                    <p class="text-small">Análises e indicadores</p>
+                </div>
+                
+                <div class="card card-wide">
+                    <h3>Estatísticas Gerais</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">1.247</div>
+                            <div class="stat-label">Alunos Ativos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">85</div>
+                            <div class="stat-label">Professores</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">42</div>
+                            <div class="stat-label">Turmas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Taxa de Aprovação</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== TELA 7: FINANCEIRO ==================== -->
+    <div id="financeiro-admin" class="screen">
+        <div class="stars-container">
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+        
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-admin')">📊 Painel</a></li>
+                <li><a href="#" onclick="showScreen('gestao-usuarios')">👥 Usuários</a></li>
+                <li><a href="#" onclick="showScreen('financeiro-admin')" class="active">💰 Financeiro</a></li>
+                <li><a href="#" onclick="showScreen('relatorios-admin')">📈 Relatórios</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Financeiro - Status de Pagamentos</h1>
+            </header>
+            
+            <div class="card card-wide">
+                <h3>Status de Mensalidades - 2025</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mês/Ano</th>
+                            <th>Valor</th>
+                            <th>Vencimento</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jan/2025</td>
+                            <td>R$ 850,00</td>
+                            <td>10/01/2025</td>
+                            <td><span class="badge badge-success">Pago</span></td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <td>Fev/2025</td>
+                            <td>R$ 850,00</td>
+                            <td>10/02/2025</td>
+                            <td><span class="badge badge-success">Pago</span></td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <td>Mar/2025</td>
+                            <td>R$ 850,00</td>
+                            <td>10/03/2025</td>
+                            <td><span class="badge badge-danger">Pendente</span></td>
+                            <td>📄</td>
+                        </tr>
+                        <tr>
+                            <td>Abr/2025</td>
+                            <td>R$ 850,00</td>
+                            <td>10/04/2025</td>
+                            <td><span class="badge badge-warning">A Vencer</span></td>
+                            <td>📄</td>
+                        </tr>
+                        <tr>
+                            <td>Mai/2025</td>
+                            <td>R$ 850,00</td>
+                            <td>10/05/2025</td>
+                            <td><span class="badge badge-warning">A Vencer</span></td>
+                            <td>📄</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="financial-summary">
+                    <div class="summary-item">
+                        <span class="summary-label">Total Ano:</span>
+                        <span class="summary-value">R$ 10.200,00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label pago">Pago:</span>
+                        <span class="summary-value pago">R$ 1.700,00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label pendente">Pendente:</span>
+                        <span class="summary-value pendente">R$ 8.500,00</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== TELA 8: DASHBOARD COORDENADOR ==================== -->
+    <div id="dashboard-coordenador" class="screen">
+        <div class="stars-container">
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+        
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-coordenador')" class="active">📊 Indicadores</a></li>
+                <li><a href="#" onclick="showScreen('analytics-coordenador')">📈 Analytics</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Dashboard - Coordenador</h1>
+                <button class="btn-primary">📥 Gerar Relatório Preditivo</button>
+            </header>
+            
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h3>Taxa de Aprovação</h3>
+                    <div class="metric-big success">94%</div>
+                    <p class="text-small">↑ 3% em relação ao ano anterior</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Risco de Evasão</h3>
+                    <div class="metric-big warning">12</div>
+                    <p class="text-small">Alunos em situação crítica</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Média Institucional</h3>
+                    <div class="metric-big">7.8</div>
+                    <p class="text-small">Desempenho geral dos alunos</p>
+                </div>
+                
+                <div class="card card-wide">
+                    <h3>Alunos em Risco de Evasão</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Aluno</th>
+                                <th>Turma</th>
+                                <th>Média</th>
+                                <th>Faltas</th>
+                                <th>Risco</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pedro Oliveira</td>
+                                <td>9º Ano B</td>
+                                <td>5.2</td>
+                                <td>18</td>
+                                <td><span class="badge badge-danger">Alto</span></td>
+                                <td><button class="btn-small">Intervir</button></td>
+                            </tr>
+                            <tr>
+                                <td>Julia Santos</td>
+                                <td>8º Ano A</td>
+                                <td>6.1</td>
+                                <td>12</td>
+                                <td><span class="badge badge-warning">Médio</span></td>
+                                <td><button class="btn-small">Intervir</button></td>
+                            </tr>
+                            <tr>
+                                <td>Lucas Ferreira</td>
+                                <td>9º Ano C</td>
+                                <td>5.8</td>
+                                <td>15</td>
+                                <td><span class="badge badge-warning">Médio</span></td>
+                                <td><button class="btn-small">Intervir</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== TELA 9: DASHBOARD PAIS ==================== -->
+    <div id="dashboard-pais" class="screen">
+        <div class="stars-container">
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+        
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-pais')" class="active">📊 Início</a></li>
+                <li><a href="#" onclick="showScreen('boletim-filho')">📝 Boletim</a></li>
+                <li><a href="#" onclick="showScreen('financeiro-pais')">💰 Financeiro</a></li>
+                <li><a href="#" onclick="showScreen('comunicados-pais')">💬 Comunicados</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Dashboard - Pais/Responsável</h1>
+                <div class="user-info">
+                    <span>Maria Oliveira</span>
+                    <div class="avatar">MO</div>
+                </div>
+            </header>
+            
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h3>Filho(a): João Silva</h3>
+                    <p>9º Ano A</p>
+                    <div class="metric-big">8.5</div>
+                    <p class="text-small">Média Geral</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Frequência</h3>
+                    <div class="metric-big">92%</div>
+                    <p class="text-small">2 faltas este mês</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Situação Financeira</h3>
+                    <div class="metric-big warning">1</div>
+                    <p class="text-small">Mensalidade pendente</p>
+                    <button class="btn-secondary small" onclick="showScreen('financeiro-pais')">Ver Detalhes</button>
+                </div>
+                
+                <div class="card card-wide">
+                    <h3>Notificações Recentes</h3>
+                    <div class="notifications-list">
+                        <div class="notification-item">
+                            <span class="notification-icon">📢</span>
+                            <div class="notification-content">
+                                <p><strong>Reunião de Pais</strong></p>
+                                <p class="text-small">Dia 15/11 às 19h - Auditório Principal</p>
+                            </div>
+                            <span class="notification-time">Há 2 dias</span>
+                        </div>
+                        <div class="notification-item">
+                            <span class="notification-icon">⚠️</span>
+                            <div class="notification-content">
+                                <p><strong>Falta Registrada</strong></p>
+                                <p class="text-small">João faltou na aula de Matemática (10/11)</p>
+                            </div>
+                            <span class="notification-time">Há 3 dias</span>
+                        </div>
+                        <div class="notification-item">
+                            <span class="notification-icon">📝</span>
+                            <div class="notification-content">
+                                <p><strong>Prova Agendada</strong></p>
+                                <p class="text-small">Português - Dia 20/11</p>
+                            </div>
+                            <span class="notification-time">Há 1 semana</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== TELAS ADICIONAIS (PLACEHOLDER) ==================== -->
+    <div id="calendario-aluno" class="screen">
+        <div class="stars-container"><div class="star"></div></div>
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-aluno')">📊 Início</a></li>
+                <li><a href="#" onclick="showScreen('notas-aluno')">📝 Notas</a></li>
+                <li><a href="#" onclick="showScreen('calendario-aluno')" class="active">📅 Calendário</a></li>
+                <li><a href="#" onclick="showScreen('documentos-aluno')">📄 Documentos</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header class="page-header"><h1>Calendário Acadêmico</h1></header>
+            <div class="card"><h3>📅 Calendário em desenvolvimento</h3></div>
+        </main>
+    </div>
+
+    <div id="documentos-aluno" class="screen">
+        <div class="stars-container"><div class="star"></div></div>
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-aluno')">📊 Início</a></li>
+                <li><a href="#" onclick="showScreen('notas-aluno')">📝 Notas</a></li>
+                <li><a href="#" onclick="showScreen('calendario-aluno')">📅 Calendário</a></li>
+                <li><a href="#" onclick="showScreen('documentos-aluno')" class="active">📄 Documentos</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header class="page-header"><h1>Documentos Digitais</h1></header>
+            <div class="card"><h3>📄 Histórico Escolar</h3><button class="btn-primary">Solicitar Documento</button></div>
+        </main>
+    </div>
+
+    <div id="comunicados-professor" class="screen">
+        <div class="stars-container"><div class="star"></div></div>
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-professor')">📊 Início</a></li>
+                <li><a href="#" onclick="showScreen('lancar-notas')">📝 Lançar Notas</a></li>
+                <li><a href="#" onclick="showScreen('comunicados-professor')" class="active">💬 Comunicados</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header class="page-header"><h1>Mural de Comunicados</h1></header>
+            <div class="card"><h3>💬 Enviar mensagem para turma</h3></div>
+        </main>
+    </div>
+
+    <div id="gestao-usuarios" class="screen">
+        <div class="stars-container"><div class="star"></div></div>
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-admin')">📊 Painel</a></li>
+                <li><a href="#" onclick="showScreen('gestao-usuarios')" class="active">👥 Usuários</a></li>
+                <li><a href="#" onclick="showScreen('financeiro-admin')">💰 Financeiro</a></li>
+                <li><a href="#" onclick="showScreen('relatorios-admin')">📈 Relatórios</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header class="page-header"><h1>Gestão de Usuários</h1><button class="btn-primary">+ Novo Cadastro</button></header>
+            <div class="card"><h3>👥 CRUD de Alunos, Professores e Funcionários</h3></div>
+        </main>
+    </div>
+
+    <div id="relatorios-admin" class="screen">
+        <div class="stars-container"><div class="star"></div></div>
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-admin')">📊 Painel</a></li>
+                <li><a href="#" onclick="showScreen('gestao-usuarios')">👥 Usuários</a></li>
+                <li><a href="#" onclick="showScreen('financeiro-admin')">💰 Financeiro</a></li>
+                <li><a href="#" onclick="showScreen('relatorios-admin')" class="active">📈 Relatórios</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header class="page-header"><h1>Relatórios Gerenciais</h1></header>
+            <div class="card"><h3>📊 Dashboards e Analytics</h3></div>
+        </main>
+    </div>
+
+    <div id="analytics-coordenador" class="screen">
+        <div class="stars-container"><div class="star"></div></div>
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-coordenador')">📊 Indicadores</a></li>
+                <li><a href="#" onclick="showScreen('analytics-coordenador')" class="active">📈 Analytics</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header class="page-header"><h1>Analytics Preditivo</h1></header>
+            <div class="card"><h3>🤖 Machine Learning - Previsão de Evasão</h3></div>
+        </main>
+    </div>
+
+    <div id="boletim-filho" class="screen">
+        <div class="stars-container"><div class="star"></div></div>
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-pais')">📊 Início</a></li>
+                <li><a href="#" onclick="showScreen('boletim-filho')" class="active">📝 Boletim</a></li>
+                <li><a href="#" onclick="showScreen('financeiro-pais')">💰 Financeiro</a></li>
+                <li><a href="#" onclick="showScreen('comunicados-pais')">💬 Comunicados</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header class="page-header"><h1>Boletim do Filho</h1></header>
+            <div class="card"><h3>📝 Notas e Frequência - João Silva</h3></div>
+        </main>
+    </div>
+
+    <div id="financeiro-pais" class="screen">
+        <div class="stars-container"><div class="star"></div></div>
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-pais')">📊 Início</a></li>
+                <li><a href="#" onclick="showScreen('boletim-filho')">📝 Boletim</a></li>
+                <li><a href="#" onclick="showScreen('financeiro-pais')" class="active">💰 Financeiro</a></li>
+                <li><a href="#" onclick="showScreen('comunicados-pais')">💬 Comunicados</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header class="page-header"><h1>Situação Financeira</h1></header>
+            <div class="card"><h3>💰 Status de Mensalidades</h3></div>
+        </main>
+    </div>
+
+    <div id="comunicados-pais" class="screen">
+        <div class="stars-container"><div class="star"></div></div>
+        <nav class="sidebar">
+            <h2 class="sidebar-logo">EduVerse</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showScreen('dashboard-pais')">📊 Início</a></li>
+                <li><a href="#" onclick="showScreen('boletim-filho')">📝 Boletim</a></li>
+                <li><a href="#" onclick="showScreen('financeiro-pais')">💰 Financeiro</a></li>
+                <li><a href="#" onclick="showScreen('comunicados-pais')" class="active">💬 Comunicados</a></li>
+                <li><a href="#" onclick="logout()">🚪 Sair</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header class="page-header"><h1>Comunicados Escolares</h1></header>
+            <div class="card"><h3>💬 Mensagens da Escola</h3></div>
+        </main>
+    </div>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // Função para mostrar tela específica
+        function showScreen(screenId) {
+            // Esconde todas as telas
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(screen => screen.classList.remove('active'));
+            
+            // Mostra a tela solicitada
+            const targetScreen = document.getElementById(screenId);
+            if (targetScreen) {
+                targetScreen.classList.add('active');
+            }
+            
+            // Scroll para o topo
+            window.scrollTo(0, 0);
+        }
+
+        // Função de login
+        function handleLogin() {
+            const profile = document.getElementById('profile-select').value;
+            
+            // Mapeamento de perfis para dashboards
+            const profileScreens = {
+                'aluno': 'dashboard-aluno',
+                'professor': 'dashboard-professor',
+                'admin': 'dashboard-admin',
+                'coordenador': 'dashboard-coordenador',
+                'pais': 'dashboard-pais'
+            };
+            
+            // Redireciona para o dashboard correto
+            const targetScreen = profileScreens[profile];
+            if (targetScreen) {
+                showScreen(targetScreen);
+            }
+        }
+
+        // Função de logout
+        function logout() {
+            if (confirm('Deseja realmente sair do sistema?')) {
+                showScreen('login-screen');
+            }
+        }
+
+        // Permite login com Enter
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginPassword = document.getElementById('login-password');
+            if (loginPassword) {
+                loginPassword.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        handleLogin();
+                    }
+                });
+            }
+        });
+
+        // Atualiza links ativos no menu
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.sidebar-menu a')) {
+                const menu = e.target.closest('.sidebar-menu');
+                const links = menu.querySelectorAll('a');
+                links.forEach(link => link.classList.remove('active'));
+                e.target.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
+            
